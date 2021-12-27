@@ -2,10 +2,16 @@ package com.henrique.mongo.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+@Document(collection = "user") //Para anotar como uma tabela do mongoDB, o parentese é opcional, a diferença e que o mongo vai mapear com letra minuscula
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private String id;
 	private String name;
 	private String email;
