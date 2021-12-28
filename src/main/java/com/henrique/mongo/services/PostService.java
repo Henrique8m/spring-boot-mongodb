@@ -1,5 +1,6 @@
 package com.henrique.mongo.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,4 +26,9 @@ public class PostService{
 		return repository.findByTitle(text);
 	}
 
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000); // para buscar na data maxima, essa data tem que ser somado mais um dia, o dia e dado em milesegundo por isso a equação
+		return repository.fullSearch(text, minDate, maxDate);
+	}
+	
 }
